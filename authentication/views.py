@@ -20,7 +20,7 @@ import requests
 def HomePages(request):
       
       # ✅ Add this inside HomePages view before return statement
-      news_df = pd.read_csv(r"C:\Users\Bishal\Desktop\Final Project\StockSanket\merolagani_news.csv")
+      news_df = pd.read_csv(os.path.join(BASE_DIR, 'merolagani_news.csv'))
       news_df = news_df.dropna(subset=["title", "date"])
       news_df["date"] = pd.to_datetime(news_df["date"], errors="coerce")
       news_df = news_df.dropna(subset=["date"]).sort_values(by="date", ascending=False)
